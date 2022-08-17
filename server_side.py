@@ -15,7 +15,7 @@ class DownloadThread():
         self.reporthook()
 
     def run(self):
-        local_fname = self.vid_code + ".mp4"
+        local_fname ="/root/NAS/PhimHay/"+ self.vid_code + ".mp4"
         try:
             urlretrieve(self.url, local_fname, self.reporthook)
         except:
@@ -37,12 +37,7 @@ class MainPanel():
         self.onDownload()
 
     def onDownload(self):
-
-        """
-        Update display with downloading gauges
-        """
         try:
-
             header = requests.head(self.url, allow_redirects=True)
             fsize = int(header.headers["content-length"]) / 1024
             # start thread
